@@ -5,15 +5,19 @@ import Share from "../../img/share.png";
 import Like from "../../img/like.png";
 import NotLike from "../../img/notlike.png";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Post = ({ data }) => {
-  const {user} = useSelector((state)=>state.authReducer.authData)
+  const { user } = useSelector((state) => state.authReducer.authData)
+  
+  const [liked, setLiked] = useState(data.likes.includes(user._id))
+  const [likes, setLikes] = useState(data.likes.length)
   return (
     <div className="Post">
       <img src={data.image ? 'http://localhost:4000/images/' + data.image : "" } alt="" />
 
       <div className="postReact">
-        <img src={data.liked ? Like : NotLike} />
+        <img src={liked ? Like : NotLike} alt="" style={{ cursor: 'pointer' }} />
         <img src={Comment} />
         <img src={Share} />
       </div>
