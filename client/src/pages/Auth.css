@@ -1,0 +1,131 @@
+.Auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  gap: 4rem;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.Auth > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-left {
+  gap: 2rem;
+  font-family: "Lato";
+}
+
+.a-left > img {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+}
+
+.Webname {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.a-left > div > h1 {
+    font-weight: 300;
+    font-size: 4rem;
+    letter-spacing: .1rem;
+    text-align: center;
+    margin: 10px 0 10px 0;
+    animation-duration: 3s;
+    animation-name: fadeInLeft;
+}
+
+.a-left> div > h6 {
+    display: flex;
+    gap: .75rem;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.a-left > div > h6 > span:nth-of-type(1) {
+    animation-name: fadeIn;
+    animation-duration: 1s;    
+}
+
+.a-left>div>h6>span:nth-of-type(2) {
+    animation-name: fadeIn;
+    animation-duration: 3s;
+}
+
+.a-left>div>h6>span:nth-of-type(3) {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+}
+
+ @keyframes fadeInLeft {
+     0% {
+         opacity: 0;
+         transform: translateX(-20px);
+     }
+
+     100% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ @keyframes fadeIn {
+     0% {
+        opacity: 0;
+     }
+
+     100% {
+         opacity: 1;
+     }
+ }
+
+ .infoForm {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     color: var(--gray);
+     align-items: center;
+     gap: 2rem;
+     background-color: var(--cardColor);
+     border-radius: 1rem;
+     padding: 1rem 1rem 2rem 1rem;
+     font-family: 'Lato';
+     font-weight: 700;
+     min-width: 20rem;
+}
+
+ .infoInput {
+     border: none;
+     outline: none;
+     background-color: var(--inputColor);
+     border-radius: 8px;
+     padding: 20px;
+     flex:1;
+ }
+
+ .infoForm > div {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 1rem;
+     width: 100%;
+ }
+
+ .infoButton {
+     width: 6rem;
+     height: 2rem;
+ }
