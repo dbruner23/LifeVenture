@@ -101,7 +101,7 @@
      align-items: center;
      gap: 2rem;
      background-color: var(--cardColor);
-     border-radius: 1rem;
+     border-radius: 0 2rem 0 2rem;
      padding: 1rem 1rem 2rem 1rem;
      font-family: 'Lato';
      font-weight: 700;

@@ -16,7 +16,8 @@ const PostShare = () => {
   const imageRef = useRef();
   const dispatch = useDispatch();
   const desc = useRef()
-  const {user} =  useSelector((state)=>state.authReducer.authData)
+  const { user } = useSelector((state) => state.authReducer.authData)
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const onImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -42,6 +43,7 @@ const PostShare = () => {
       const fileName = Date.now() + image.name;
       data.append("name", fileName);
       data.append("file", image);
+      console.log(data);
       newPost.image = fileName;
       try {
         dispatch(uploadImage(data))
@@ -56,7 +58,7 @@ const PostShare = () => {
 
   return (
     <div className="PostShare">
-      <img src={ProfileImage} alt="" />
+      <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt="" />
       <div>
         <input ref={desc} required type="text" placeholder="Create new LifeVenture" />
         <div className="postOptions">
@@ -81,7 +83,6 @@ const PostShare = () => {
             Schedule
           </div>
           <button className="button ps-button" onClick={handleSubmit} disabled={loading}
-          
           >{loading? "Uploading..." : "Share"}</button>
           <div style={{ display: "none" }}>
             <input

@@ -6,18 +6,25 @@ import Like from "../../img/like.png";
 import NotLike from "../../img/notlike.png";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { likePost } from "../../api/PostRequest.js";
 
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData)
   
   const [liked, setLiked] = useState(data.likes.includes(user._id))
   const [likes, setLikes] = useState(data.likes.length)
+
+  const handleLike = () => {
+    likePost(data._id, user._id)
+    setLiked((prev) => !prev);
+    liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1)
+  }
   return (
     <div className="Post">
-      <img src={data.image ? 'http://localhost:4000/images/' + data.image : "" } alt="" />
+      <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : "" } alt="" />
 
       <div className="postReact">
-        <img src={liked ? Like : NotLike} alt="" style={{ cursor: 'pointer' }} />
+        <img src={liked ? Like : NotLike} alt="" style={{ cursor: 'pointer' }} onClick={handleLike} />
         <img src={Comment} />
         <img src={Share} />
       </div>

@@ -14,16 +14,35 @@ const UserSchema = mongoose.Schema(
             type: String, 
             required: true
         },
+        lastname: {
+            type: String,
+            required: true
+        },
         isAdmin: {
             type: Boolean,
             default: false,
         }, 
-        profilePicture: String,
-        coverPicture: String,
-        about: String,
-        livesin: String,
-        favActivities: String,
-        favAdventureres: String,
+        profilePicture: {
+            type: String
+        },
+        coverPicture: {
+            type: String
+        },
+        about: {
+            type: String
+        },
+        livesin: {
+            type: String
+        },
+        country: {
+            type: String
+        },
+        favActivities: {
+            type: String
+        },
+        favAdventurers: {
+            type: String
+        },
         followers: [], 
         following: []
     },
