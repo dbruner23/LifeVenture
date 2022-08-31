@@ -1,13 +1,14 @@
 .RightSide {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .navIcon {
-  margin-top: 1rem;
   display: flex;
+  height: 3rem;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navIcon > img {

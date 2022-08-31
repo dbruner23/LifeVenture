@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ProfileCard = ({ location }) => {
   const { user } = useSelector((state) => state.authReducer.authData)
   const posts = useSelector((state)=> state.postReducer.posts)
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
+  const s3url = `https://${process.env.REACT_APP_BUCKET_NAME}.s3-${process.env.REACT_APP_BUCKET_REGION}.amazonaws.com/`
   
 
   const ProfilePage = false;
@@ -16,8 +16,8 @@ const ProfileCard = ({ location }) => {
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
-        <img src={user.coverPicture? serverPublic + user.coverPicture : serverPublic + "defaultCover.jpg"}  alt="" />
-        <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt="" />
+        <img src={user.coverPicture ? s3url + user.coverPicture : `${s3url}Defaults/default-cover.jpg`}  alt="" />
+        <img src={user.profilePicture ? s3url + user.profilePicture : s3url + "Defaults/default-user.png"} alt="" />
       </div>
       <div className="ProfileName">
         <span>{user.firstname} {user.lastname}</span>

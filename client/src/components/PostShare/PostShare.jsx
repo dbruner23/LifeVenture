@@ -7,7 +7,9 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useSelector, useDispatch } from "react-redux";
-import { uploadImage, uploadPost } from "../../actions/uploadAction.js";
+import { uploadS3, uploadPost } from "../../actions/uploadAction.js";
+
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
 const PostShare = () => {
@@ -17,7 +19,7 @@ const PostShare = () => {
   const dispatch = useDispatch();
   const desc = useRef()
   const { user } = useSelector((state) => state.authReducer.authData)
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+  const s3url = `https://${process.env.REACT_APP_BUCKET_NAME}.s3-${process.env.REACT_APP_BUCKET_REGION}.amazonaws.com/`
 
   const onImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -30,6 +32,7 @@ const PostShare = () => {
     setImage(null);
     desc.current.value = "";
   }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,14 +42,10 @@ const PostShare = () => {
     };
 
     if (image) {
-      const data = new FormData();
-      const fileName = Date.now() + image.name;
-      data.append("name", fileName);
-      data.append("file", image);
-      console.log(data);
+      const fileName = user._id + Date.now() + image.name;
       newPost.image = fileName;
       try {
-        dispatch(uploadImage(data))
+        await uploadS3(image, fileName)
       } catch (error) {
         console.log(error)
       }
@@ -58,7 +57,7 @@ const PostShare = () => {
 
   return (
     <div className="PostShare">
-      <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt="" />
+      <img src={user.profilePicture ? s3url + user.profilePicture : s3url + "Defaults/default-user.png"} alt="" />
       <div>
         <input ref={desc} required type="text" placeholder="Create new LifeVenture" />
         <div className="postOptions">

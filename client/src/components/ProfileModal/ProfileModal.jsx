@@ -2,7 +2,7 @@ import { Modal, useMantineTheme } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { uploadImage } from '../../actions/uploadAction.js'
+import { uploadS3 } from '../../actions/uploadAction.js'
 import { updateUser } from '../../actions/userAction.js'
 
 function ProfileModal({modalOpened, setModalOpened, data}) {
@@ -28,29 +28,29 @@ function ProfileModal({modalOpened, setModalOpened, data}) {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let UserData = formData;
         if (profileImage) {
-            const data = new FormData();
-            const fileName = Date.now() + profileImage.name;
-            data.append("name", fileName);
-            data.append("file", profileImage);
+            // const data = new FormData();
+            const fileName = user._id + Date.now() + profileImage.name;
+            // data.append("name", fileName);
+            // data.append("file", profileImage);
             UserData.profilePicture = fileName;
             try {
-                dispatch(uploadImage(data));
+                await uploadS3(profileImage, fileName);
             } catch (error) {
                 console.log(error);
             }
         }
         if (coverImage) {
-            const data = new FormData();
-            const fileName = Date.now() + coverImage.name;
-            data.append("name", fileName);
-            data.append("file", coverImage);
+            // const data = new FormData();
+            const fileName = user._id + Date.now() + coverImage.name;
+            // data.append("name", fileName);
+            // data.append("file", coverImage);
             UserData.coverPicture = fileName;
             try {
-                dispatch(uploadImage(data));
+                await uploadS3(coverImage, fileName);
             } catch (error) {
                 console.log(error);
             }

@@ -21,7 +21,7 @@ const Post = ({ data }) => {
   }
   return (
     <div className="Post">
-      <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : "" } alt="" />
+      <img src={data.image ? `https://${process.env.REACT_APP_BUCKET_NAME}.s3-${process.env.REACT_APP_BUCKET_REGION}.amazonaws.com/${data.image}` : "" } alt="" />
 
       <div className="postReact">
         <img src={liked ? Like : NotLike} alt="" style={{ cursor: 'pointer' }} onClick={handleLike} />

@@ -15,20 +15,24 @@
   border-radius: 10px;
   padding: 5px;
   height: 2em;
+  gap: .2rem;
 }
 
 .Search > input {
   background-color: var(--inputBackgroundColor);
   backdrop-filter: var(--inputBackdropFilter);
-  
+  font-family: "Raleway" sans-serif;
+  font-weight: 500;
   border: none;
   outline: none;
   border-radius: 5px;
   font-size: 17px;
+  color: white;
 }
 
 .Search>input::placeholder {
   color: white;
+  font-family: "Raleway";
 }
 
 .s-icon {

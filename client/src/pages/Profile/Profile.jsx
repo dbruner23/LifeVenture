@@ -1,7 +1,9 @@
 import React from "react";
 import ProfileLeft from "../../components/ProfileLeft/ProfileLeft.jsx";
 import ProfileCard from "../../components/ProfileCard/ProfileCard.jsx";
-import PostSide from "../../components/PostSide/PostSide.jsx";
+import NavMenu from "../../components/NavMenu/NavMenu.jsx";
+import PostShare from "../../components/PostShare/PostShare.jsx";
+import Posts from "../../components/Posts/Posts.jsx";
 import RightSide from "../../components/RightSide/RightSide.jsx";
 import "./Profile.css";
 
@@ -10,8 +12,10 @@ const Profile = () => {
     <div className="Profile">
       <ProfileLeft />
       <div className="Profile-center">
-        <ProfileCard location= "profilePage"/>
-        <PostSide />
+        <NavMenu/>
+        <ProfileCard location="profilePage" />
+        <PostShare />
+        <Posts />
       </div>
       <RightSide />
     </div>

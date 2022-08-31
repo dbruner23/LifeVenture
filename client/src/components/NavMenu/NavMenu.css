@@ -1,0 +1,77 @@
+.NavOptions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    height: 3rem;
+    letter-spacing: 1.25px;
+}
+
+@media screen and (max-width: 480px) {
+    .NavOptions {
+        display: none;
+    }
+}
+
+.fa-caret-down {
+    margin-left: 5px;
+    color: white;
+}
+
+.NavMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    height: 5rem;
+    z-index: 5;
+    color: white;
+}
+
+.ActiveNavMenu {
+    background-color: var(--gray);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    height: 5rem;
+    color: white;
+    z-index: 5;
+}
+
+.ListHeader {
+    padding: 0 15px 0 15px;
+}
+
+.Dropdown {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5rem;
+    background-color: var(--gray);
+    backdrop-filter: blur(5px);
+    z-index: 5;
+    
+}
+
+.DropItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 2.5rem;
+    width: 9rem;
+    padding: 10px 15px 10px 15px;
+    transition: all .3s ease-in-out;
+    color: white;
+    z-index: 5;
+}
+
+.DropItem:hover {
+    background: #0E89B9;
+    color: white;
+}
