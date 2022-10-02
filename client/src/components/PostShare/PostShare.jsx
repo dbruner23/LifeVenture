@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import ProfileImage from "../../img/profileImg.jpg";
 import "./PostShare.css";
 import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
@@ -8,6 +7,8 @@ import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useSelector, useDispatch } from "react-redux";
 import { uploadS3, uploadPost } from "../../actions/uploadAction.js";
+import { Wrapper} from "@googlemaps/react-wrapper"
+import { useEffect } from "react";
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -32,6 +33,8 @@ const PostShare = () => {
     setImage(null);
     desc.current.value = "";
   }
+
+  //Map setup
   
   const handleSubmit = async (e) => {
     e.preventDefault();

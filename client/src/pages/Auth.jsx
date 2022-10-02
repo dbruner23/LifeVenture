@@ -14,7 +14,7 @@ const Auth = () => {
   const loading = useSelector((state)=>state.authReducer.loading)
   
   const handleChange = (e) => {
-    setData({...data, [e.target.name]: e.target.value})
+    setData({ ...data, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {

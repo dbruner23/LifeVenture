@@ -29,7 +29,7 @@ const Post = ({ data }) => {
         <img src={Share} />
       </div>
       <span style={{ color: "var(--gray)", fontSize: "12px" }}>
-        {data.likes}likes
+        {likes} likes
       </span>
       <div className="detail">
         <span>
